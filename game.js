@@ -48,7 +48,7 @@ function move() {
 	if (upPressed) {
 		var newTop = positionTop-1;
 
-		var element = document.elementFromPoint(player.offsetLeft, newTop);
+		var element = document.elementFromPoint(0, newTop);
 		if (element.classList.contains('sky') == false) {
 			player.style.top = newTop + 'px';	
 		}
@@ -73,7 +73,7 @@ function move() {
 	if (rightPressed) {
 		var newLeft = positionLeft+1;
 		
-		var element = document.elementFromPoint(newLeft+32, player.offsetTop);
+		var element = document.elementFromPoint(0, player.offsetTop);
 		if (element.classList.contains('sky') == false) {
 			player.style.left = newLeft + 'px';		
 		}
@@ -99,12 +99,30 @@ function keydown(event) {
 	}
 }
 
-
 function myLoadFunction() {
 	timeout = setInterval(move, 10);
 	document.addEventListener('keydown', keydown);
 	document.addEventListener('keyup', keyup);
 }
 
-
 document.addEventListener('DOMContentLoaded', myLoadFunction);
+
+function clickEvent() {
+var element = document.getElementById('startbtn');
+element.style.display = 'none';
+setInterval (bomb,900); 
+}
+
+document.addEventListener('click', clickEvent);
+
+function bomb() {
+	var element = document.createElement('div');
+	var random = Math.floor(Math.random()*window.innerWidth);
+	element.style.left = random + 'px';
+	element.className = 'bomb';
+  document.body.appendChild(element);
+
+  setInterval(function() {
+ 	var Khasney = element.offsetTop;
+ 	element.style.top = Khasney + 1 + 'px';},5);
+}
