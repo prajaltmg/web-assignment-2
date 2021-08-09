@@ -108,12 +108,13 @@ function myLoadFunction() {
 document.addEventListener('DOMContentLoaded', myLoadFunction);
 
 function clickEvent() {
-var element = document.getElementById('startbtn');
+var element =  document.getElementById("startbtn");
 element.style.display = 'none';
 setInterval (bomb,900); 
 }
 
 document.addEventListener('click', clickEvent);
+
 
 function bomb() {
 	var element = document.createElement('div');
